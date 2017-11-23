@@ -12,7 +12,6 @@ init:
 install:
   - pip install meson ninja
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
-  - msbuild gstreamer-sharp.sln /t:Build /p:Configuration=Release /p:TargetFramework=v4.0
   - meson build/
 
 build: off
