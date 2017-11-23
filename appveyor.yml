@@ -27,3 +27,4 @@ build: off
 
 cache:
   - C:\Gstreamer\1.0\x86_64\
+  - '%LOCALAPPDATA%\pip\Cache'
