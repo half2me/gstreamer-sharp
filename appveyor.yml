@@ -1,0 +1,29 @@
+version: '{build}'
+os: Visual Studio 2015
+
+platform: x64
+  
+init:
+  - cmd: set PATH=%PYTHON3%;%PYTHON3%\scripts;%PATH%
+
+install:
+  - ps: choco install -y -r pkgconfiglite
+  - pip install meson ninja
+  - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
+  - ps: |
+      if (-Not (Test-Path C:\gstreamer\1.0\x86_64)) {
+        Write-Host "Downloading..."
+        $msiPath = "$($env:USERPROFILE)\gstreamer-1.0-devel-x86_64-1.12.3.msi"
+        (New-Object Net.WebClient).DownloadFile('https://gstreamer.freedesktop.org/data/pkg/windows/1.12.3/gstreamer-1.0-devel-x86_64-1.12.3.msi', $msiPath)
+        Write-Host "Installing..."
+        cmd /c start /wait msiexec /package $msiPath /passive ADDLOCAL=ALL
+      }
+  - set PKG_CONFIG_PATH=C:\gstreamer\1.0\x86_64\lib\pkgconfig
+  - REM meson build/
+  - REM cd build
+  - REM ninja
+
+build: off
+
+cache:
+  - C:\Gstreamer\1.0\x86_64\
