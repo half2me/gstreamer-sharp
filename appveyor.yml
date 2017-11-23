@@ -23,7 +23,7 @@ install:
       }
   - set PKG_CONFIG_PATH=C:\gstreamer\1.0\x86_64\lib\pkgconfig
   - set
-  - msbuild
+  - msbuild gstreamer-sharp.sln /t:Build /p:Configuration=Release /p:TargetFramework=v4.0
   - REM meson build/
   - REM cd build
   - REM ninja
