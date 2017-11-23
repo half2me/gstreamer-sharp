@@ -22,7 +22,10 @@ install:
         cmd /c start /wait msiexec /package $msiPath /passive ADDLOCAL=ALL
       }
   - set PKG_CONFIG_PATH=C:\gstreamer\1.0\x86_64\lib\pkgconfig
-  - meson build/
+  - set
+  - where msbuild
+  - where mcs
+  - REM meson build/
   - REM cd build
   - REM ninja
 
