@@ -2,6 +2,9 @@ version: '{build}'
 os: Visual Studio 2015
 
 platform: x64
+
+environment:
+  PYTHON3: "C:\\Python36"
   
 init:
   - cmd: set PATH=%PYTHON3%;%PYTHON3%\scripts;%PATH%
